@@ -1,5 +1,5 @@
 .divOp{
-    margin-top: 30px;
+    margin-top: 1.2rem;
     display: inline-flex;
     justify-content: center;
     align-items:flex-start;
@@ -14,4 +14,15 @@
 .divTextResult{
     display: flex;
     justify-content: center;
+}
+
+.divQtd{
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+}
+
+.divContainerGerador{
+    display: flex;
+    flex-direction: column;
 }
