@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button'
 import style from './style.module.css'
+import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react'
 
 
@@ -7,7 +8,8 @@ export function LayoutGerador() {
 
     const [senha, setSenha] = useState("")
     const [Copiar, setCopiar] = useState("Copiar")
-    const [senhaqtd, setQuantidade] = useState()
+    const [senhaqtd, setQuantidade] = useState(8)
+    const [checked, setCheck] = useState(false)
 
     
     const copiarSenha = () => {
@@ -38,18 +40,35 @@ export function LayoutGerador() {
     return resultado
 }
 
+const showCheck = () => {
+    !checked
+    ?setCheck(true)
+    :setCheck(false)
+}
+
     return(
         <div className={style.divContainerGerador}>
 
-            <div className={style.divQtd}>
-                <label htmlFor="SenhaQtd">Tamanho:</label>
-                <input 
-                    type="number" 
-                    id="SenhaQtd" 
-                    value={senhaqtd}
-                    onChange={(e) => setQuantidade(e.target.value) }
-                />
+            <div>
+            <label htmlFor="Check">Colocar a quantidade desejada?</label>
+            <Checkbox  
+                checked={checked}
+                onChange={showCheck}
+            />
             </div>
+            {checked ? 
+                <div className={style.divQtd}>
+                    <label htmlFor="SenhaQtd">Tamanho:</label>
+                    <input 
+                        type="number" 
+                        id="SenhaQtd" 
+                        value={senhaqtd}
+                        onChange={(e) => setQuantidade(e.target.value) }
+                    />
+                </div>
+                :null
+            }
+            
 
             <div className={style.divOp}>
                 <Button 
